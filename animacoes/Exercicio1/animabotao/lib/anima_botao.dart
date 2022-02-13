@@ -44,7 +44,7 @@ class _AnimaBotaoState extends State<AnimaBotao> {
         onTap: _updateAnimation,
         child: AnimatedAlign(
           alignment: selected ? Alignment.topCenter : Alignment.bottomRight,
-          curve: Curves.easeOut,
+          curve: Curves.ease,
           duration: const Duration(seconds: 2),
           child: Container(
             width: selected ? 150 : 50,
