@@ -9,13 +9,12 @@ class AnimaBotao extends StatefulWidget {
 
 class _AnimaBotaoState extends State<AnimaBotao> {
   bool selected = false;
-  late Color color;
-  late double borderRadius = 150;
+  Color color = Colors.blueAccent;
+  double borderRadius = 150;
 
   @override
   initState() {
     super.initState();
-    color = Colors.blueAccent;
     borderRadius = 150;
   }
 
@@ -28,15 +27,15 @@ class _AnimaBotaoState extends State<AnimaBotao> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height * 0.10;
-    double width = MediaQuery.of(context).size.width * 1.0;
+    double screenHeight = MediaQuery.of(context).size.height * 0.10;
+    double screenWidth = MediaQuery.of(context).size.width * 1.0;
 
     return Container(
-      width: width,
-      height: height,
+      width: screenWidth,
+      height: screenHeight,
       child: GestureDetector(
         onTap: _updateAnimation,
-        child: AnimatedAlign(
+        child: AnimatedContainer(
           alignment: selected ? Alignment.topCenter : Alignment.bottomRight,
           curve: Curves.ease,
           duration: const Duration(seconds: 2),
