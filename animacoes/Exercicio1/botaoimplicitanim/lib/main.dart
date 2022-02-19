@@ -1,55 +1,21 @@
+import 'package:botaoimplicitanim/animation_implicit.dart';
 import 'package:flutter/material.dart';
 
-class AnimaBotao extends StatefulWidget {
-  const AnimaBotao({Key? key}) : super(key: key);
-
-  @override
-  _AnimaBotaoState createState() => _AnimaBotaoState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _AnimaBotaoState extends State<AnimaBotao> {
-  bool selected = false;
-  late Color color;
-  late double borderRadius = 150;
-
-  @override
-  initState() {
-    super.initState();
-    color = Colors.blueAccent;
-    borderRadius = 150;
-  }
-
-  double? _updateAnimation() {
-    setState(() {
-      borderRadius = selected ? 150 : 0;
-      selected = !selected;
-    });
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height * 0.10;
-    double width = MediaQuery.of(context).size.width * 1.0;
-
-    return Container(
-      width: width,
-      height: height,
-      child: GestureDetector(
-        onTap: _updateAnimation,
-        child: AnimatedAlign(
-          alignment: selected ? Alignment.topCenter : Alignment.bottomRight,
-          curve: Curves.ease,
-          duration: const Duration(seconds: 2),
-          child: Container(
-            width: selected ? 150 : 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(borderRadius),
-            ),
-          ),
-        ),
+    return MaterialApp(
+      title: 'Animação Implicita - AnimatedContainer',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: const AnimationImplicit(),
     );
   }
 }
