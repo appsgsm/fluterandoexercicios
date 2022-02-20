@@ -9,36 +9,38 @@ class AnimationImplicit extends StatefulWidget {
 
 class _AnimationImplicitState extends State<AnimationImplicit> {
   bool selected = false;
-  Color color = Colors.blueAccent;
-  double borderRadius = 100;
+  Color ballColor = Colors.blueAccent;
+  double borderRadius = 150;
+  double ballWidth = 50;
+  double ballHeight = 50;
   Alignment alignBall = Alignment.bottomRight;
+  Duration durationAnimation = const Duration(seconds: 2);
 
   double? _updateAnimation() {
     setState(() {
-      borderRadius = selected ? 150 : 0;
-      alignBall = selected ? Alignment.topCenter : Alignment.bottomRight;
       selected = !selected;
+      borderRadius = selected ? 0 : 150;
+      ballWidth = selected ? 150 : 50;
+      alignBall = selected ? Alignment.topCenter : Alignment.bottomRight;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 500,
-      height: 500,
-      child: GestureDetector(
-        onTap: _updateAnimation,
-        child: Container(
-          child: AnimatedContainer(
-            alignment: Alignment.bottomRight,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(borderRadius),
-                color: Colors.blueAccent),
-            duration: const Duration(seconds: 2),
-            curve: Curves.ease,
-            width: 50,
-            height: 50,
-          ),
+    return GestureDetector(
+      onTap: _updateAnimation,
+      child: AnimatedAlign(
+        alignment: alignBall,
+        duration: durationAnimation,
+        child: AnimatedContainer(
+          alignment: Alignment.bottomRight,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius),
+              color: ballColor),
+          duration: durationAnimation,
+          curve: Curves.ease,
+          width: ballWidth,
+          height: ballHeight,
         ),
       ),
     );
