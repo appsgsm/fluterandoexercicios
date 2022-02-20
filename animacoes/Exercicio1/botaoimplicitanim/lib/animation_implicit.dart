@@ -33,7 +33,6 @@ class _AnimationImplicitState extends State<AnimationImplicit> {
         alignment: alignBall,
         duration: durationAnimation,
         child: AnimatedContainer(
-          alignment: Alignment.bottomRight,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadius),
               color: ballColor),
