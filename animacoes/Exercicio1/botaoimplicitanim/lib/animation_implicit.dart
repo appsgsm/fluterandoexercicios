@@ -16,7 +16,7 @@ class _AnimationImplicitState extends State<AnimationImplicit> {
   Alignment alignBall = Alignment.bottomRight;
   Duration durationAnimation = const Duration(seconds: 2);
 
-  double? _updateAnimation() {
+  void _updateAnimation() {
     setState(() {
       selected = !selected;
       borderRadius = selected ? 0 : 150;
